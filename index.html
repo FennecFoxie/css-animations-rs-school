@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shower Presentation Engine</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/styles.css">
+    <style>
+        .shower {
+            --slide-ratio: calc(16 / 9);
+        }
+    </style>
+</head>
+<body class="shower list">
+
+    <header class="caption">
+        <h1>Animations</h1>
+        <p>It's alive!</p>
+    </header>
+
+    <section class="slide" id="cover">
+        <h2>Animations</h2>
+        <div class="loader">
+            <span class="loader__element"></span>
+            <span class="loader__element"></span>
+            <span class="loader__element"></span>
+          </div>
+        <style>
+            #cover h2 {
+                margin: 30px 0 0;
+                color: black;
+                text-align: center;
+                font-size: 70px;
+            }
+
+            :root {
+                --point-color: #555;
+                --size: 5px;
+            }
+
+            .loader {
+                background-color: white;
+                overflow: hidden;
+                width: 100%;
+                height: 50%;
+                position: fixed;
+                bottom: 0; left: 0;
+                display: flex;
+                align-items: center;
+                align-content: center; 
+                justify-content: center;  
+                z-index: 100000;
+            }
+
+            .loader__element {
+            border-radius: 100%;
+            border: var(--size) solid var(--point-color);
+            margin: calc(var(--size)*2);
+            }
+
+            .loader__element:nth-child(1) {
+            animation: preloader .6s ease-in-out alternate infinite;
+            }
+            .loader__element:nth-child(2) {
+            animation: preloader .6s ease-in-out alternate .2s infinite;
+            }
+
+            .loader__element:nth-child(3) {
+            animation: preloader .6s ease-in-out alternate .4s infinite;
+            }
+
+            @keyframes preloader {
+            100% { transform: scale(2); }
+            }
+
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Transitions</h2>
+        <p>CSS transitions allows you to change property values smoothly, over a given duration.</p>
+        <div class="columns two">
+            <div>
+                <button class="submit-example">Submit</button>
+                <p></p>
+            </div>
+
+            <div>
+                <button class="submit-example transition-example">Submit</button>
+                <p>transition: all 1s ease-in-out;</p>
+            </div>
+        </div>
+        
+
+        <style>
+            .submit-example {
+                font-size: 40px;
+                width: 100%;
+                padding: 10px 20px;
+                background: white;
+                text-transform: uppercase;
+                font-weight: bold;
+                border: 4px solid black;
+            }
+
+            .transition-example {
+                transition: transform 1s ease-in-out, background 1s ease-in-out;
+            }
+
+            .submit-example:hover {
+                background: rosybrown;
+                transform: scale(1.1)
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Transitions</h2>
+        <p>transition: all 1s ease-in-out;</p>
+        <hr>
+        <p class="next">transition: transform 1s ease-in-out, background 1s ease-in-out;</p>
+        <hr>
+        <div class="next">
+            <p class="no-margin">transition-property: transform;</p>
+            <p class="no-margin">transition-duration: 1s;</p>
+            <p class="no-margin">transition-timing-function: ease-in-out;</p>
+            <p>transition-delay: 0;</p>
+        </div>
+
+        <style>
+            p.no-margin {
+                margin-bottom: 0;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Timing-function</h2>
+
+        <div class="columns two">
+            <div>
+                <button class="submit-example transition-example transition-ease">Submit</button>
+                <ul>
+                    <li>linear</li>
+                    <li>ease</li>
+                    <li>ease-in</li>
+                    <li>ease-out</li>
+                    <li>ease-in-out</li>
+                </ul>
+            </div>
+
+            <div class="next">
+                <button class="submit-example transition-example transition-steps">Submit</button>
+                <ul>
+                    <li>steps(3, start)</li>
+                    <li>cubic-bezier(0.1, 0.7, 1.0, 0.1)</li>
+                </ul>
+                <a href="https://cubic-bezier.com/" target="_blank">cubic-bezier.com/</a>
+            </div>
+        </div>
+
+        <style>
+            .transition-linear {
+                transition-timing-function: linear;
+            }
+
+            .transition-steps {
+                transition-timing-function: steps(3, start);
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Animations</h2>
+
+        <div class="columns two">
+            <div>
+                <p>@keyframes</p>
+                <p>Describes the <i>animation itself</i></p>
+            </div>
+
+            <div>
+                <p>animation</p>
+                <p>Describes the <i>animation properties</i>: name, duration, timing-function, delay, iteration-count, direction, play-state and fill-mode</p>
+            </div>
+            
+        </div>    
+    </section>
+
+    <section class="slide">
+        <h2>Keyframes</h2>
+        <p>Style can be changed by using the keywords "from" and "to" (which represent 0% (start) and 100% (complete)). It is also possible to use percent. By using percent, you can add as many style changes as you like.
+        </p>
+    </section>
+
+    <section class="slide">
+        <pre>
+            <code>@keyframes example {</code>
+            <code>  from {background-color: red;}</code>
+            <code>  to {background-color: yellow;}</code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre>
+            <code>@keyframes example {</code>
+            <code>  0% {background-color: red;}</code>
+            <code>  5% {background-color: yellow;}</code>
+            <code>  50% {background-color: blue;}</code>
+            <code>  100% {background-color: green;}</code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Animation</h2>
+
+        <ul>
+            <li>animation-name</li>
+            <li>animation-duration</li>
+            <li>animation-timing-function</li>
+            <li>animation-delay</li>
+            <li>animation-iteration-count (number or <i>infinite</i>)</li>
+            <li>animation-direction (normal, reverse, alternate, alternate-reverse)</li>
+            <li>animation-play-state (paused or running)</li>
+            <li>animation-fill-mode (none, forwards, backwards, both)</li>
+        </ul>   
+    </section>
+
+    <section class="slide">
+        <pre>
+            <code>@keyframes preloader {</code>
+            <code>  0% { transform: scale(1); }</code>
+            <code>  100% { transform: scale(2); }</code>
+            <code>}</code>
+        </pre>
+
+        <pre>
+            <code>animation: preloader .6s ease-in-out alternate .4s infinite;</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Animatable CSS properties</h2>
+
+        <p>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties" target="_blank">Certain CSS properties</a> can be animated using CSS Animations or CSS Transitions
+        </p>
+        <p>Typicly it should have <i>numeric</i> or <i>color</i> value.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Controlling with JS</h2>
+
+        <ul>
+            <li>animationiteration</li>
+            <li>animationend</li>
+            <li>animationstart</li>
+            <li>transitionstart</li>
+            <li>transitionend</li>
+        </ul>
+
+        <p>Manipulating the <i>animation-play-state</i> property</p>
+        
+    </section>
+
+    <section class="slide">
+        <h2>Compatibility</h2>
+        <a href="https://caniuse.com/?search=transition" target="_blank">can I use..?</a>
+    </section>
+
+    <section class="slide">
+        <h2>Exercises</h2>
+
+        <ul>
+            <li>Buttons with interesting hover effects</li>
+            <li>Preloader</li>
+            <li>Animated logo</li>
+        </ul>
+
+    </section>
+
+    <section class="slide">
+        <h2 class="shout shrink">Q&A</h2>
+    </section>
+
+    <footer class="badge">
+        <!-- <a href="https://github.com/shower/shower">Fork me on GitHub</a> -->
+    </footer>
+
+    <div class="progress"></div>
+
+    <script src="shower/shower.js"></script>
+    <!-- Copyright © 3000 Yours Truly, Famous Inc. -->
+
+</body>
+</html>
